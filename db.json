@@ -33,14 +33,6 @@
       "id": "OjNMnxw"
     },
     {
-      "name": "Jay Shon",
-      "age": "33",
-      "email": "JShon@mail.com",
-      "techSkills": "PHP",
-      "salary": "750",
-      "id": "85zRG2a"
-    },
-    {
       "name": "Rosie Simpson",
       "age": "25",
       "email": "ilyanes@gmail.com",
@@ -119,6 +111,17 @@
       "techSkills": "Redux",
       "salary": "5000",
       "id": "Li123123z123llaO"
+    },
+    {
+      "name": "Илья Кононенко",
+      "age": "32",
+      "email": "ilya88@gmail.com",
+      "techSkills": "Remix",
+      "salary": "1000",
+      "id": "Fa43b32oUCP"
+    },
+    {
+      "id": "7nsEZ7O"
     }
   ]
 }

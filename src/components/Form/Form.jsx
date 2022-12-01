@@ -7,22 +7,23 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Form({ setIsShow, handleClick }) {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [techSkills, setTechSkills] = useState("");
-  const [salary, setSalary] = useState("");
+  // const [name, setName] = useState("");
+  // const [age, setAge] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [techSkills, setTechSkills] = useState("");
+  // const [salary, setSalary] = useState("");
+  const [userInfo, setUserInfo] = useState({});
 
   const dispatch = useDispatch();
 
   const contactEmail = useSelector((state) =>
-    state.contacts.contacts.some((contact) => contact.email === email)
+    state.contacts.contacts.some((contact) => contact.email === userInfo.email)
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, contact) => {
     e.preventDefault();
     if (contactEmail) {
-      toast.warn(`${email} is already in the contact`, {
+      toast.warn(`${userInfo.email} is already in the contact`, {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -33,42 +34,45 @@ export default function Form({ setIsShow, handleClick }) {
       });
       reset();
     } else {
-      dispatch(addContact({ name, age, email, techSkills, salary }));
+      dispatch(addContact(contact));
       reset();
       setIsShow((isShow) => !isShow);
     }
   };
 
   const reset = () => {
-    setName("");
-    setAge("");
-    setEmail("");
-    setTechSkills("");
-    setSalary("");
+    // setName("");
+    // setAge("");
+    // setEmail("");
+    // setTechSkills("");
+    // setSalary("");
+    setUserInfo({});
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "age":
-        setAge(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "techSkills":
-        setTechSkills(value);
-        break;
-      case "salary":
-        setSalary(value);
-        break;
-      default:
-        break;
-    }
+    // const { name, value } = e.target;
+    setUserInfo((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+    // switch (name) {
+    //   case "name":
+    //     setName(value);
+    //     break;
+    //   case "age":
+    //     setAge(value);
+    //     break;
+    //   case "email":
+    //     setEmail(value);
+    //     break;
+    //   case "techSkills":
+    //     setTechSkills(value);
+    //     break;
+    //   case "salary":
+    //     setSalary(value);
+    //     break;
+    //   default:
+    //     break;
+    // }
   };
 
   const formInputId = nanoid();
@@ -83,7 +87,7 @@ export default function Form({ setIsShow, handleClick }) {
             type="text"
             name="name"
             placeholder="John Bill"
-            value={name}
+            value={userInfo.name}
             onChange={handleChange}
             minLength="3"
             required
@@ -95,7 +99,7 @@ export default function Form({ setIsShow, handleClick }) {
           <input
             type="number"
             name="age"
-            value={age}
+            value={userInfo.age}
             onChange={handleChange}
             minLength="2"
             required
@@ -108,7 +112,7 @@ export default function Form({ setIsShow, handleClick }) {
           <input
             type="email"
             name="email"
-            value={email}
+            value={userInfo.email}
             onChange={handleChange}
             required
             id={formInputId}
@@ -120,7 +124,7 @@ export default function Form({ setIsShow, handleClick }) {
           <input
             type="text"
             name="techSkills"
-            value={techSkills}
+            value={userInfo.techSkills}
             onChange={handleChange}
             minLength="3"
             required
@@ -133,7 +137,7 @@ export default function Form({ setIsShow, handleClick }) {
           <input
             type="text"
             name="salary"
-            value={salary}
+            value={userInfo.salary}
             onChange={handleChange}
             required
             id={formInputId}

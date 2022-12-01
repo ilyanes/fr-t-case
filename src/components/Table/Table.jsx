@@ -48,9 +48,9 @@ export default function Table() {
       console.log(error);
     }
   };
-  const dataF = () => {
-    dispatch(fetchNewContacts());
-  };
+  //   const dataF = () => {
+  //     dispatch(fetchNewContacts());
+  //   };
 
   const fetchData = async () => {
     const users = await fetchUsers();
@@ -59,19 +59,23 @@ export default function Table() {
       setHasMore(false);
     }
     setPage(page + 1);
+    fetchContacts();
   };
-  //   console.log(items);
+  console.log(items);
 
   return (
     <>
       {!loader && contacts.length > 0 ? (
-        <div className={styles.scrollStyle}>
+        <div>
           <InfiniteScroll
-            dataLength={contacts.length}
-            next={dataF}
+            dataLength={items.length}
+            next={fetchData}
+            height={200}
+            pullDownToRefreshThreshold={150}
             hasMore={hasMore}
             loader={<Loader />}
             endMessage={<EndMsg />}
+            scrollableTarget="scrollableDiv"
           >
             <table>
               <thead>
@@ -83,7 +87,7 @@ export default function Table() {
               </thead>
 
               <tbody>
-                {contacts.map(
+                {items.map(
                   ({ id, name, age, email, techSkills, salary }, index) => (
                     <tr key={id}>
                       <td>{index + 1}</td>
