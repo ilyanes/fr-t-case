@@ -1,19 +1,124 @@
 {
-  "posts": [
+  "contacts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "123",
+      "name": "Json Sth",
+      "age": "33",
+      "email": "ilyanes88@gmail.com",
+      "techSkills": "React",
+      "salary": "100"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Rosie Simpson",
+      "age": "25",
+      "email": "ilyanes@gmail.com",
+      "techSkills": "Redux",
+      "salary": "1000",
+      "id": "fi123WS8_7"
+    },
+    {
+      "name": "ilyanes",
+      "age": "18",
+      "email": "ilya@gmail.com",
+      "techSkills": "Java",
+      "salary": "500",
+      "id": "qmz5J1A"
+    },
+    {
+      "name": "Stan Rodney",
+      "age": "36",
+      "email": "Stan@mail.com",
+      "techSkills": "Remix",
+      "salary": "750",
+      "id": "OjNMnxw"
+    },
+    {
+      "name": "Jay Shon",
+      "age": "33",
+      "email": "JShon@mail.com",
+      "techSkills": "PHP",
+      "salary": "750",
+      "id": "85zRG2a"
+    },
+    {
+      "name": "Rosie Simpson",
+      "age": "25",
+      "email": "ilyanes@gmail.com",
+      "techSkills": "Redux",
+      "salary": "1000",
+      "id": "f123iWS8_7"
+    },
+    {
+      "name": "ilyanes",
+      "age": "18",
+      "email": "ilya@gmail.com",
+      "techSkills": "Java",
+      "salary": "500",
+      "id": "qmz5213J1A"
+    },
+    {
+      "name": "Stan Rodney",
+      "age": "36",
+      "email": "Stan@mail.com",
+      "techSkills": "Remix",
+      "salary": "750",
+      "id": "OjNM123nxw"
+    },
+    {
+      "name": "Jay Shon",
+      "age": "33",
+      "email": "JShon@mail.com",
+      "techSkills": "PHP",
+      "salary": "750",
+      "id": "85zR131G2a"
+    },
+    {
+      "name": "Illia",
+      "age": "2",
+      "email": "ilyan@gmail.com",
+      "techSkills": "React",
+      "salary": "5000",
+      "id": "0e21313ORuJ"
+    },
+    {
+      "name": "Илья Кононенко",
+      "age": "32",
+      "email": "ilya88@gmail.com",
+      "techSkills": "Remix",
+      "salary": "1000",
+      "id": "Fab32oUCP"
+    },
+    {
+      "name": "Rosie Simpson",
+      "age": "0",
+      "email": "i88@gmail.com",
+      "techSkills": "Redux",
+      "salary": "5000",
+      "id": "Liz123llaO"
+    },
+    {
+      "name": "Illia",
+      "age": "2",
+      "email": "ilyan@gmail.com",
+      "techSkills": "React",
+      "salary": "5000",
+      "id": "0e21232313ORuJ"
+    },
+    {
+      "name": "Илья Кононенко",
+      "age": "32",
+      "email": "ilya88@gmail.com",
+      "techSkills": "Remix",
+      "salary": "1000",
+      "id": "F123ab32oUCP"
+    },
+    {
+      "name": "Rosie Simpson",
+      "age": "0",
+      "email": "i88@gmail.com",
+      "techSkills": "Redux",
+      "salary": "5000",
+      "id": "Li123123z123llaO"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
