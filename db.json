@@ -121,12 +121,20 @@
       "id": "YgstMH9"
     },
     {
-      "name": "Frend",
-      "age": "15",
-      "email": "qwe123@mail.com",
+      "name": "frenk",
+      "age": "24",
+      "email": "ny@mail.com",
       "techSkills": "React",
-      "salary": "500",
-      "id": "qV5rzW-"
+      "salary": "1000",
+      "id": "WsxzoF-"
+    },
+    {
+      "name": "frenk",
+      "age": "12",
+      "email": "fr@ls.com",
+      "techSkills": "JavaScript",
+      "salary": "100",
+      "id": "FCSro_a"
     }
   ]
 }
