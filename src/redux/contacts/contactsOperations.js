@@ -5,11 +5,11 @@ import { numberPage } from "./contactsSelectors";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
-  async () => {
+  async (page) => {
     fetchContacts.pending();
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/contacts?_page=1&_limit=5"
+        `http://localhost:4000/contacts?_page=${page}&_limit=5`
       );
       return data;
     } catch (error) {

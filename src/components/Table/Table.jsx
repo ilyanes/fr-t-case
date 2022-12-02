@@ -36,48 +36,57 @@ const tableHeaders = [
   "Option",
 ];
 
-export default function Table({ children }) {
+export default function Table() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const loader = useSelector(isLoading);
   const hasmore = useSelector(isMore);
 
+  const [limit, setLimit] = useState(null);
   const [items, setItems] = useState(contacts);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts(1));
   }, [dispatch]);
 
-  const fetchUsers = async () => {
-    try {
-      const { data } = await axios.get(
-        `http://localhost:4000/contacts?_page=${page}&_limit=5`
-      );
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const fetchData = async () => {
-    const users = await fetchUsers();
-    setItems([...items, ...users]);
-    if (users.length === 0 || users.length < 5) {
+    const usersFromServer = dispatch(fetchContacts(page));
+    if (usersFromServer.length === 0 || usersFromServer.length < 5) {
       setHasMore(false);
     }
     setPage(page + 1);
   };
-  console.log(items);
+
+  //   const fetchUsers = async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         `http://localhost:4000/contacts?_page=${page}&_limit=5`
+  //       );
+  //       return data;
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   const fetchData = async () => {
+  //     const users = await fetchUsers();
+  //     setItems([...items, ...users]);
+  //     if (users.length === 0 || users.length < 5) {
+  //       setHasMore(false);
+  //     }
+  //     setPage(page + 1);
+  //   };
+  console.log(contacts);
 
   return (
     <>
-      <ContactsForm items={items}></ContactsForm>
+      <ContactsForm></ContactsForm>
       {!loader && contacts.length > 0 ? (
         <DivStyle>
           <InfiniteScroll
-            dataLength={items.length}
+            dataLength={contacts.length}
             next={fetchData}
             height={400}
             pullDownToRefreshThreshold={150}
@@ -101,7 +110,7 @@ export default function Table({ children }) {
               </thead>
 
               <tbody>
-                {items.map(
+                {contacts.map(
                   ({ id, name, age, email, techSkills, salary }, index) => (
                     <TrHead key={id}>
                       <TdBody>{index + 1}</TdBody>

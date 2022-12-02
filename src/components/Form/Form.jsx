@@ -10,7 +10,13 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Form({ items, setIsShow, handleClick }) {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    age: "",
+    email: "",
+    techSkills: "",
+    salary: "",
+  });
 
   const dispatch = useDispatch();
 

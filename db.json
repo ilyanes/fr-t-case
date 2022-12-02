@@ -129,12 +129,28 @@
       "id": "WsxzoF-"
     },
     {
-      "name": "frenk",
-      "age": "12",
-      "email": "fr@ls.com",
-      "techSkills": "JavaScript",
-      "salary": "100",
-      "id": "FCSro_a"
+      "name": "Bobby",
+      "age": "18",
+      "email": "bobby18@ma.com",
+      "techSkills": "React",
+      "salary": "1000",
+      "id": "dftGC5N"
+    },
+    {
+      "name": "Franky",
+      "age": "18",
+      "email": "wfr@ml.com",
+      "techSkills": "React",
+      "salary": "1000",
+      "id": "Euxj5Pa"
+    },
+    {
+      "name": "Lucy",
+      "age": "19",
+      "email": "lucy@mail.com",
+      "techSkills": "React",
+      "salary": "500",
+      "id": "oWotqNm"
     }
   ]
 }
