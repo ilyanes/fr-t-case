@@ -1,0 +1,15 @@
+.contactFormDiv {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.formButton {
+  background-color: yellow;
+  border-radius: 10px;
+  width: 150px;
+  border-style: none;
+  color: blue;
+  padding: 5px;
+}

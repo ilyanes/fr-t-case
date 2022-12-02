@@ -2,25 +2,27 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import styles from "./Form.module.css";
-import { addContact } from "../../redux/contacts/contactsOperations";
+import {
+  addContact,
+  fetchContacts,
+} from "../../redux/contacts/contactsOperations";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Form({ setIsShow, handleClick }) {
-  // const [name, setName] = useState("");
-  // const [age, setAge] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [techSkills, setTechSkills] = useState("");
-  // const [salary, setSalary] = useState("");
+export default function Form({ items, setIsShow, handleClick }) {
   const [userInfo, setUserInfo] = useState({});
 
   const dispatch = useDispatch();
 
-  const contactEmail = useSelector((state) =>
-    state.contacts.contacts.some((contact) => contact.email === userInfo.email)
+  // const contactEmail = useSelector((state) =>
+  //   state.contacts.contacts.some((contact) => contact.email === userInfo.email)
+  // );
+
+  const contactEmail = items.some(
+    (contact) => contact.email === userInfo.email
   );
 
-  const handleSubmit = (e, contact) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (contactEmail) {
       toast.warn(`${userInfo.email} is already in the contact`, {
@@ -34,45 +36,24 @@ export default function Form({ setIsShow, handleClick }) {
       });
       reset();
     } else {
-      dispatch(addContact(contact));
+      dispatch(addContact(userInfo));
       reset();
       setIsShow((isShow) => !isShow);
     }
   };
 
   const reset = () => {
-    // setName("");
-    // setAge("");
-    // setEmail("");
-    // setTechSkills("");
-    // setSalary("");
     setUserInfo({});
   };
 
   const handleChange = (e) => {
-    // const { name, value } = e.target;
-    setUserInfo((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-    // switch (name) {
-    //   case "name":
-    //     setName(value);
-    //     break;
-    //   case "age":
-    //     setAge(value);
-    //     break;
-    //   case "email":
-    //     setEmail(value);
-    //     break;
-    //   case "techSkills":
-    //     setTechSkills(value);
-    //     break;
-    //   case "salary":
-    //     setSalary(value);
-    //     break;
-    //   default:
-    //     break;
-    // }
+    if (!e.target.value) {
+      return;
+    } else {
+      setUserInfo((prev) => {
+        return { ...prev, [e.target.name]: e.target.value };
+      });
+    }
   };
 
   const formInputId = nanoid();
@@ -84,6 +65,7 @@ export default function Form({ setIsShow, handleClick }) {
         <label className={styles.addLabel}>
           Name
           <input
+            className={styles.addInput}
             type="text"
             name="name"
             placeholder="John Bill"
@@ -97,6 +79,7 @@ export default function Form({ setIsShow, handleClick }) {
         <label className={styles.addLabel}>
           Age
           <input
+            className={styles.addInput}
             type="number"
             name="age"
             value={userInfo.age}
@@ -110,6 +93,7 @@ export default function Form({ setIsShow, handleClick }) {
         <label className={styles.addLabel}>
           Email
           <input
+            className={styles.addInput}
             type="email"
             name="email"
             value={userInfo.email}
@@ -122,6 +106,7 @@ export default function Form({ setIsShow, handleClick }) {
         <label className={styles.addLabel}>
           TechSkills
           <input
+            className={styles.addInput}
             type="text"
             name="techSkills"
             value={userInfo.techSkills}
@@ -135,6 +120,7 @@ export default function Form({ setIsShow, handleClick }) {
         <label className={styles.addLabel}>
           Salary
           <input
+            className={styles.addInput}
             type="text"
             name="salary"
             value={userInfo.salary}
@@ -144,8 +130,14 @@ export default function Form({ setIsShow, handleClick }) {
             placeholder="1000"
           />
         </label>
-        <button type="submit">Add worker</button>
-        <button type="button" onClick={handleClick}>
+        <button className={styles.formButtonAdd} type="submit">
+          Add worker
+        </button>
+        <button
+          className={styles.formButtonAdd}
+          type="button"
+          onClick={handleClick}
+        >
           Cancel
         </button>
       </form>

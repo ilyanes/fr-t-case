@@ -25,14 +25,6 @@
       "id": "qmz5J1A"
     },
     {
-      "name": "Stan Rodney",
-      "age": "36",
-      "email": "Stan@mail.com",
-      "techSkills": "Remix",
-      "salary": "750",
-      "id": "OjNMnxw"
-    },
-    {
       "name": "Rosie Simpson",
       "age": "25",
       "email": "ilyanes@gmail.com",
@@ -121,7 +113,20 @@
       "id": "Fa43b32oUCP"
     },
     {
-      "id": "7nsEZ7O"
+      "name": "Кононенко Илья Александрович",
+      "age": "25",
+      "email": "wee8@gmail.com",
+      "techSkills": "React",
+      "salary": "1000",
+      "id": "YgstMH9"
+    },
+    {
+      "name": "Frend",
+      "age": "15",
+      "email": "qwe123@mail.com",
+      "techSkills": "React",
+      "salary": "500",
+      "id": "qV5rzW-"
     }
   ]
 }

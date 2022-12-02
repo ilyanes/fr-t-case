@@ -1,5 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getContacts, isLoading } from "../../redux/contacts/contactsSelectors";
+import {
+  getContacts,
+  isLoading,
+  isMore,
+} from "../../redux/contacts/contactsSelectors";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import {
@@ -8,11 +12,19 @@ import {
   fetchNewContacts,
 } from "../../redux/contacts/contactsOperations";
 
-import styles from "./Table.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import EndMsg from "../EndMsg/EndMsg";
+import {
+  DivStyle,
+  TableBtn,
+  TableStyle,
+  TdBody,
+  ThHead,
+  TrHead,
+} from "./Table.styled";
+import ContactsForm from "../ContactForm/ContactForm";
 
 const tableHeaders = [
   "№",
@@ -24,10 +36,11 @@ const tableHeaders = [
   "Option",
 ];
 
-export default function Table() {
+export default function Table({ children }) {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const loader = useSelector(isLoading);
+  const hasmore = useSelector(isMore);
 
   const [items, setItems] = useState(contacts);
   const [hasMore, setHasMore] = useState(true);
@@ -35,7 +48,6 @@ export default function Table() {
 
   useEffect(() => {
     dispatch(fetchContacts());
-    // dispatch(fetchNewContacts());
   }, [dispatch]);
 
   const fetchUsers = async () => {
@@ -48,9 +60,6 @@ export default function Table() {
       console.log(error);
     }
   };
-  //   const dataF = () => {
-  //     dispatch(fetchNewContacts());
-  //   };
 
   const fetchData = async () => {
     const users = await fetchUsers();
@@ -59,58 +68,68 @@ export default function Table() {
       setHasMore(false);
     }
     setPage(page + 1);
-    fetchContacts();
   };
   console.log(items);
 
   return (
     <>
+      <ContactsForm items={items}></ContactsForm>
       {!loader && contacts.length > 0 ? (
-        <div>
+        <DivStyle>
           <InfiniteScroll
             dataLength={items.length}
             next={fetchData}
-            height={200}
+            height={400}
             pullDownToRefreshThreshold={150}
             hasMore={hasMore}
             loader={<Loader />}
             endMessage={<EndMsg />}
             scrollableTarget="scrollableDiv"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <table>
+            <TableStyle>
               <thead>
-                <tr>
+                <TrHead>
                   {tableHeaders.map((item, index) => (
-                    <th key={index}>{item}</th>
+                    <ThHead key={index}>{item}</ThHead>
                   ))}
-                </tr>
+                </TrHead>
               </thead>
 
               <tbody>
                 {items.map(
                   ({ id, name, age, email, techSkills, salary }, index) => (
-                    <tr key={id}>
-                      <td>{index + 1}</td>
-                      <td>{name}</td>
-                      <td>{age}</td>
-                      <td>{email}</td>
-                      <td>{techSkills}</td>
-                      <td>{salary}</td>
-                      <td>
-                        <button
-                          onClick={() => dispatch(deleteContact(id))}
+                    <TrHead key={id}>
+                      <TdBody>{index + 1}</TdBody>
+                      <TdBody>{name}</TdBody>
+                      <TdBody>{age}</TdBody>
+                      <TdBody>{email}</TdBody>
+                      <TdBody>{techSkills}</TdBody>
+                      <TdBody>{salary}</TdBody>
+                      <TdBody>
+                        <TableBtn
+                          onClick={() => {
+                            dispatch(deleteContact(id));
+                            // fetchData();
+                            // fetchUsers();
+                            // dispatch(fetchContacts());
+                          }}
                           type="button"
                         >
                           <AiOutlineDelete />
-                        </button>
-                      </td>
-                    </tr>
+                        </TableBtn>
+                      </TdBody>
+                    </TrHead>
                   )
                 )}
               </tbody>
-            </table>
+            </TableStyle>
           </InfiniteScroll>
-        </div>
+        </DivStyle>
       ) : (
         <p>No Contacts</p>
       )}

@@ -10,4 +10,21 @@
   flex-direction: column;
   text-align: center;
   margin-bottom: 10px;
+  color: yellow;
+}
+
+.formButtonAdd {
+  background-color: white;
+  border-radius: 10px;
+  width: 100px;
+  border-style: none;
+  color: blue;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.addInput {
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
 }

@@ -3,7 +3,7 @@ import React from "react";
 function EndMsg() {
   return (
     <p style={{ textAlign: "center" }}>
-      <b>The End</b>
+      <b>BE BRAVE</b>
     </p>
   );
 }

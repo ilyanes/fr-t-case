@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import { useSelector } from "react-redux";
-// import { numberPage } from "./contactsSelectors";
+import { useSelector } from "react-redux";
+import { numberPage } from "./contactsSelectors";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
@@ -18,21 +18,21 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// export const fetchNewContacts = createAsyncThunk(
-//   "contacts/fetchNewContacts",
-//   async () => {
-//     const userPage = useSelector(numberPage);
-//     fetchNewContacts.pending();
-//     try {
-//       const { data } = await axios.get(
-//         `http://localhost:4000/contacts?_page=${userPage}&_limit=5`
-//       );
-//       return data;
-//     } catch (error) {
-//       fetchNewContacts.rejected(error);
-//     }
-//   }
-// );
+export const fetchNewContacts = createAsyncThunk(
+  "contacts/fetchNewContacts",
+  async () => {
+    const userPage = useSelector(numberPage);
+    fetchNewContacts.pending();
+    try {
+      const { data } = await axios.get(
+        `http://localhost:4000/contacts?_page=${userPage}&_limit=5`
+      );
+      return data;
+    } catch (error) {
+      fetchNewContacts.rejected(error);
+    }
+  }
+);
 
 export const addContact = createAsyncThunk(
   "contacts/addContact",

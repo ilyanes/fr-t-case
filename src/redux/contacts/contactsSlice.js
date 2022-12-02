@@ -12,19 +12,18 @@ const initialState = {
   hasMore: true,
   page: 2,
 };
-
 export const contactsSlice = createSlice({
   name: "contacts",
   initialState,
   extraReducers: {
-    // [fetchNewContacts.fulfilled](state, { payload }) {
-    //   state.loading = false;
-    //   state.contacts = [...state.contacts, ...payload];
-    //   if (payload.length === 0 || payload.length < 5) {
-    //     state.hasMore = false;
-    //   }
-    //   state.page = state.page + 1;
-    // },
+    [fetchNewContacts.fulfilled](state, { payload }) {
+      state.loading = false;
+      state.contacts = [...state.contacts, ...payload];
+      if (payload.length === 0 || payload.length < 5) {
+        state.hasMore = false;
+      }
+      state.page = state.page + 1;
+    },
     [fetchContacts.pending](state) {
       state.loading = true;
     },
