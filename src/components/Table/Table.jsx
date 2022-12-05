@@ -39,25 +39,25 @@ const tableHeaders = [
 export default function Table() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  // const loader = useSelector(isLoading);
+  const loader = useSelector(isLoading);
   const hasmore = useSelector(isMore);
 
-  // const [limit, setLimit] = useState(null);
-  // const [items, setItems] = useState(contacts);
-  // const [hasMore, setHasMore] = useState(true);
-  // const [page, setPage] = useState(2);
+  const [limit, setLimit] = useState(null);
+  const [items, setItems] = useState(contacts);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(2);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, []);
 
-  // const fetchData = async () => {
-  //   const usersFromServer = dispatch(fetchContacts(page));
-  //   if (usersFromServer.length === 0 || usersFromServer.length < 5) {
-  //     setHasMore(false);
-  //   }
-  //   setPage(page + 1);
-  // };
+  const fetchData = async () => {
+    const usersFromServer = dispatch(fetchContacts(page));
+    if (usersFromServer.length === 0 || usersFromServer.length < 5) {
+      setHasMore(false);
+    }
+    setPage(page + 1);
+  };
 
   //   const fetchUsers = async () => {
   //     try {
@@ -83,17 +83,17 @@ export default function Table() {
   return (
     <>
       <ContactsForm></ContactsForm>
-      {contacts.length > 0 ? (
+      { contacts.length > 0 ? (
         <DivStyle>
           <InfiniteScroll
             dataLength={contacts.length}
-            next={dispatch(fetchNewContacts())}
+            next={e=>  dispatch(fetchContacts())}
             height={400}
             // pullDownToRefreshThreshold={150}
-            hasMore={hasmore}
+            hasMore={true}
             loader={<Loader />}
             endMessage={<EndMsg />}
-            scrollableTarget="scrollableDiv"
+            // scrollableTarget="scrollableDiv"
             style={{
               display: "flex",
               flexDirection: "column",
