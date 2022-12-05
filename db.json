@@ -1,22 +1,6 @@
 {
   "contacts": [
     {
-      "id": "123",
-      "name": "Json Sth",
-      "age": "33",
-      "email": "ilyanes88@gmail.com",
-      "techSkills": "React",
-      "salary": "100"
-    },
-    {
-      "name": "Rosie Simpson",
-      "age": "25",
-      "email": "ilyanes@gmail.com",
-      "techSkills": "Redux",
-      "salary": "1000",
-      "id": "fi123WS8_7"
-    },
-    {
       "name": "ilyanes",
       "age": "18",
       "email": "ilya@gmail.com",
@@ -39,14 +23,6 @@
       "techSkills": "Java",
       "salary": "500",
       "id": "qmz5213J1A"
-    },
-    {
-      "name": "Stan Rodney",
-      "age": "36",
-      "email": "Stan@mail.com",
-      "techSkills": "Remix",
-      "salary": "750",
-      "id": "OjNM123nxw"
     },
     {
       "name": "Jay Shon",
