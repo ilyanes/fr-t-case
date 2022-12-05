@@ -3,6 +3,7 @@ import {
   getContacts,
   isLoading,
   isMore,
+  numberLimit,
 } from "../../redux/contacts/contactsSelectors";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useEffect, useState } from "react";
@@ -40,7 +41,7 @@ export default function Table() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const loader = useSelector(isLoading);
-  const hasmore = useSelector(isMore);
+  const userLimit = useSelector(numberLimit);
 
   const [limit, setLimit] = useState(null);
   const [items, setItems] = useState(contacts);
@@ -48,7 +49,7 @@ export default function Table() {
   const [page, setPage] = useState(2);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts(5));
   }, []);
 
   const fetchData = async () => {
@@ -80,14 +81,16 @@ export default function Table() {
   //   };
   console.log(contacts);
 
+  const hasmore = useSelector(isMore); //true default
+
   return (
     <>
       <ContactsForm></ContactsForm>
-      { contacts.length > 0 ? (
+      {contacts.length > 0 ? (
         <DivStyle>
           <InfiniteScroll
             dataLength={contacts.length}
-            next={e=>  dispatch(fetchContacts())}
+            next={(e) => dispatch(fetchNewContacts(userLimit + 5))}
             height={400}
             // pullDownToRefreshThreshold={150}
             hasMore={true}
