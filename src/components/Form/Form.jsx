@@ -2,14 +2,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import styles from "./Form.module.css";
-import {
-  addContact,
-  fetchContacts,
-} from "../../redux/contacts/contactsOperations";
+import { addContact } from "../../redux/contacts/contactsOperations";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Form({ items, setIsShow, handleClick }) {
+export default function Form({ setIsShow, handleClick }) {
   const [userInfo, setUserInfo] = useState({
     name: "",
     age: "",
@@ -20,12 +17,8 @@ export default function Form({ items, setIsShow, handleClick }) {
 
   const dispatch = useDispatch();
 
-  // const contactEmail = useSelector((state) =>
-  //   state.contacts.contacts.some((contact) => contact.email === userInfo.email)
-  // );
-
-  const contactEmail = items.some(
-    (contact) => contact.email === userInfo.email
+  const contactEmail = useSelector((state) =>
+    state.contacts.contacts.some((contact) => contact.email === userInfo.email)
   );
 
   const handleSubmit = (e) => {
@@ -40,7 +33,6 @@ export default function Form({ items, setIsShow, handleClick }) {
         draggable: true,
         progress: undefined,
       });
-      reset();
     } else {
       dispatch(addContact(userInfo));
       reset();

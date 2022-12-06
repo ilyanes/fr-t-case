@@ -3,7 +3,7 @@ import Form from "../Form/Form";
 import Modal from "../Modal/Modal";
 import styles from "./ContactForm.module.css";
 
-export default function ContactsForm({ items }) {
+export default function ContactsForm() {
   const [isShow, setIsShow] = useState(false);
 
   const handleClick = () => {
@@ -16,11 +16,7 @@ export default function ContactsForm({ items }) {
       </button>
       {isShow && (
         <Modal handleClick={handleClick}>
-          <Form
-            handleClick={handleClick}
-            items={items}
-            setIsShow={setIsShow}
-          ></Form>
+          <Form handleClick={handleClick} setIsShow={setIsShow}></Form>
         </Modal>
       )}
     </div>

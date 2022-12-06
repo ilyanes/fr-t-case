@@ -35,7 +35,7 @@
     {
       "name": "Илья Кононенко",
       "age": "32",
-      "email": "ilya88@gmail.com",
+      "email": "ilya888@gmail.com",
       "techSkills": "Remix",
       "salary": "1000",
       "id": "Fab32oUCP"
@@ -59,18 +59,10 @@
     {
       "name": "Илья Кононенко",
       "age": "32",
-      "email": "ilya88@gmail.com",
+      "email": "ilya188@gmail.com",
       "techSkills": "Remix",
       "salary": "1000",
       "id": "F123ab32oUCP"
-    },
-    {
-      "name": "Rosie Simpson",
-      "age": "0",
-      "email": "i88@gmail.com",
-      "techSkills": "Redux",
-      "salary": "5000",
-      "id": "Li123123z123llaO"
     },
     {
       "name": "Илья Кононенко",
@@ -79,14 +71,6 @@
       "techSkills": "Remix",
       "salary": "1000",
       "id": "Fa43b32oUCP"
-    },
-    {
-      "name": "Кононенко Илья Александрович",
-      "age": "25",
-      "email": "wee8@gmail.com",
-      "techSkills": "React",
-      "salary": "1000",
-      "id": "YgstMH9"
     },
     {
       "name": "frenk",
@@ -105,20 +89,36 @@
       "id": "dftGC5N"
     },
     {
-      "name": "Franky",
+      "name": "Tur",
       "age": "18",
-      "email": "wfr@ml.com",
+      "email": "tur@mail.com",
       "techSkills": "React",
       "salary": "1000",
-      "id": "Euxj5Pa"
+      "id": "8r4SUls"
     },
     {
-      "name": "Lucy",
-      "age": "19",
-      "email": "lucy@mail.com",
+      "name": "Torku",
+      "age": "15",
+      "email": "tor@mail.com",
+      "techSkills": "Remix",
+      "salary": "200",
+      "id": "ZZUoM_L"
+    },
+    {
+      "name": "Илья Кононенко",
+      "age": "32",
+      "email": "ilyanes88@gmail.com",
       "techSkills": "React",
-      "salary": "500",
-      "id": "oWotqNm"
+      "salary": "1000",
+      "id": "qt119Q1"
+    },
+    {
+      "name": "Super Mom",
+      "age": "55",
+      "email": "mommy@m.com",
+      "techSkills": "All",
+      "salary": "10000",
+      "id": "0MalM5d"
     }
   ]
 }

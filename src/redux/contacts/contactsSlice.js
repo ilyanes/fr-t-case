@@ -1,43 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  addContact,
-  deleteContact,
-  fetchContacts,
-  fetchNewContacts,
-} from "./contactsOperations";
+import { addContact, deleteContact, fetchContacts } from "./contactsOperations";
 
 const initialState = {
   contacts: [],
   loading: false,
   hasMore: true,
-  limit: 5,
-  page: 2,
 };
 export const contactsSlice = createSlice({
   name: "contacts",
   initialState,
   extraReducers: {
-    [fetchNewContacts.pending](state) {
-      state.loading = true;
-    },
-    [fetchNewContacts.fulfilled](state, { payload }) {
-      state.loading = false;
-      state.limit = state.limit + 5;
-      const newContacts = payload.filter(
-        (contact) => contact.id !== state.contacts.id
-      );
-      state.contacts = [...state, newContacts];
-    },
-    [fetchNewContacts.rejected](state) {
-      state.loading = false;
-    },
     [fetchContacts.pending](state) {
       state.loading = true;
     },
     [fetchContacts.fulfilled](state, { payload }) {
       state.loading = false;
-      // state.contacts = payload;
-      state.contacts = [...state.contacts, ...payload];
+      const oldContacts = JSON.parse(JSON.stringify(state.contacts));
+      const newContacts = payload.filter(
+        (item) =>
+          !oldContacts.some((itemToBeRemoved) => itemToBeRemoved.id === item.id)
+      );
+      state.contacts = [...state.contacts, ...newContacts];
+      if (newContacts.length === 0 || newContacts.length < 5) {
+        state.hasMore = false;
+      }
     },
     [fetchContacts.rejected](state) {
       state.loading = false;

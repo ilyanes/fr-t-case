@@ -3,31 +3,15 @@ import axios from "axios";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
-  async (userLimit) => {
+  async (limit) => {
     fetchContacts.pending();
-    // const userLimit = useSelector(numberLimit); //def 5
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/contacts?_limit=${userLimit}`
+        `http://localhost:4000/contacts?_limit=${limit}`
       );
       return data;
     } catch (error) {
       fetchContacts.rejected(error);
-    }
-  }
-);
-
-export const fetchNewContacts = createAsyncThunk(
-  "contacts/fetchNewContacts",
-  async (userLimit) => {
-    fetchNewContacts.pending();
-    try {
-      const { data } = await axios.get(
-        `http://localhost:4000/contacts?_limit=${userLimit}`
-      );
-      return data;
-    } catch (error) {
-      fetchNewContacts.rejected(error);
     }
   }
 );
